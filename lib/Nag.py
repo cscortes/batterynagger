@@ -5,7 +5,7 @@ import pygame
 
 class Nag(object):
     NOTICE_SOUND = "ping.ogg"
-    EMERGENCY_POWER_SOUND = "low_bat.wav"
+    EMERGENCY_POWER_SOUND = "low_bat.ogg"
 
     def __init__(self):
         pygame.init()
