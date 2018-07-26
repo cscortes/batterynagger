@@ -2,7 +2,7 @@
 
 A Python/Tkinter based Noisy Nagger that lets you know when your laptop battery has reached user configured levels, i.e. 30% a ping every once in a while, 20% a ping more frequently, and 10% constant ping every second!
 
-## Reason
+## Background
 
 As a programmer, I tend to ignore the Linux/Windows “warnings” that my battery is at the lower end of the spectrum and requires a charge.  
 

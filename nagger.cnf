@@ -1,6 +1,6 @@
 [LEVEL]
-warning = 16
-critical = 12
+warning = 25
+critical = 15
 fatal = 10
 
 [TIMEOUT]
