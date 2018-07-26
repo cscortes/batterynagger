@@ -1,0 +1,11 @@
+[LEVEL]
+warning = 16
+critical = 12
+fatal = 10
+
+[TIMEOUT]
+normal = 120
+warning = 120
+critical = 10
+fatal = 1
+
