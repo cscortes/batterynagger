@@ -1,10 +1,11 @@
+import platform
 import time
 from enum import Enum
 
-from lib.myexec import exec, exec_lower
 from lib.Nag import nag
 from lib.PConfig import thePConfig
 from lib.projlog import log
+from lib.win_batteryinfo import win_battery_info
 
 
 class BatteryLevel(Enum):
@@ -31,13 +32,19 @@ class NoticeLogic(object):
         self.update_battery_info()
 
     def update_battery_info(self):
-        self._percent = int(exec("cat","/sys/class/power_supply/BAT0/capacity"))
-        status = exec_lower("cat","/sys/class/power_supply/BAT0/status")
+        if platform.system() == "Linux":
+            from lib.myexec import exec, exec_lower
 
-        if (status == "charging"):
-            self._ischarging = BatteryState.CHARGING
+            self._percent = int(exec("cat","/sys/class/power_supply/BAT0/capacity"))
+            status = exec_lower("cat","/sys/class/power_supply/BAT0/status")
+            self._ischarging = BatteryState.CHARGING if (status == "charging") else BatteryState.DISCHARGING
+
+        elif platform.system() == "Windows":
+            self._percent, status = win_battery_info()
+            self._ischarging = BatteryState.CHARGING if status else BatteryState.DISCHARGING
+
         else:
-            self._ischarging = BatteryState.DISCHARGING
+            self._percent, self._ischarging = (0, BatteryState.DISCHARGING)
             
     def get_percent(self):
         return self._percent
