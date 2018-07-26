@@ -8,8 +8,11 @@ pillow = "*"
 ipython = "*"
 logbook = "*"
 pygame = "*"
+"pypiwin32" = "*"
+wmi = "*"
 
 [dev-packages]
+rope = "*"
 
 [requires]
 python_version = "3.6"
